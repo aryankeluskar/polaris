@@ -3503,7 +3503,7 @@ export function WithSubHeaders() {
       amountSpent: '$2,400',
     },
     {
-      id: '2561',
+      id: '2562',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -3511,7 +3511,7 @@ export function WithSubHeaders() {
       amountSpent: '$140',
     },
     {
-      id: '2561',
+      id: '2563',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -3519,7 +3519,7 @@ export function WithSubHeaders() {
       amountSpent: '$140',
     },
     {
-      id: '2561',
+      id: '2564',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
@@ -3542,8 +3542,10 @@ export function WithSubHeaders() {
           selected={index === 3 ? 'indeterminate' : index === 0}
           disabled={index === 1}
         >
-          <IndexTable.Cell colSpan={3}>May 31st 2023</IndexTable.Cell>
-          <IndexTable.Cell>
+          <IndexTable.Cell colSpan={3} header>
+            May 31st 2023
+          </IndexTable.Cell>
+          <IndexTable.Cell header>
             <HorizontalStack align="end">
               <Button
                 accessibilityLabel="Expand subheader"
@@ -3556,7 +3558,7 @@ export function WithSubHeaders() {
         {new Array(2).fill('').map((_, rowIndex) => (
           <IndexTable.Row
             key={rowIndex}
-            id={id}
+            id={`${id}${rowIndex}`}
             position={index}
             selected={index === 0 || (index === 3 && rowIndex === 0)}
             disabled={index === 1}
