@@ -3662,7 +3662,7 @@ export function WithSubHeaders() {
                 <IndexTable.Cell
                   headers={`${subheaderId} ${columnHeadings[0].id}`}
                 >
-                  <Text fontWeight="bold" as="span">
+                  <Text variant="bodyMd" fontWeight="semibold" as="span">
                     {name}
                   </Text>
                 </IndexTable.Cell>
