@@ -135,6 +135,9 @@ $loading-panel-height: 53px;
 
   .TableHeading-first,
   .TableHeading-second {
+    visibility: visible;
+    background-color: var(--p-color-bg-subdued);
+
     #{$se23} & {
       background-color: var(--p-color-bg-secondary-experimental);
     }
