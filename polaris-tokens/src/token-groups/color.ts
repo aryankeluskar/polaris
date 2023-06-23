@@ -490,7 +490,7 @@ export const color: {
     description: '',
   },
   'color-bg-interactive-subdued': {
-    value: colors.blue[50],
+    value: colors.blue[100],
     valueExperimental: colorsExperimental.gray[8](),
     description: '',
   },
