@@ -79,6 +79,8 @@ $spinner-icon-size: 12px;
 
     #{$se23} & {
       border-color: var(--p-color-border-input-active-experimental);
+      border-width: var(--p-border-width-2-experimental);
+
       // stylelint-disable-next-line -- se23
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
@@ -93,7 +95,7 @@ $spinner-icon-size: 12px;
     // stylelint-disable-next-line -- se23
     .Input:hover ~ .Backdrop,
     .Input:focus-visible ~ .Backdrop {
-      border-width: var(--p-border-width-1);
+      border-width: var(--p-border-width-2-experimental);
       border-color: var(--p-color-border-critical-strong-experimental);
     }
   }
@@ -104,7 +106,7 @@ $spinner-icon-size: 12px;
     border-color: var(--p-color-border-critical);
 
     #{$se23} & {
-      border-width: var(--p-border-width-1-experimental);
+      border-width: var(--p-border-width-2-experimental);
       border-color: var(--p-color-border-critical-strong-experimental);
     }
 
@@ -276,6 +278,7 @@ $spinner-icon-size: 12px;
 
   #{$se23} & {
     border-radius: var(--p-border-radius-2);
+    border-width: var(--p-border-width-1-experimental);
   }
 }
 

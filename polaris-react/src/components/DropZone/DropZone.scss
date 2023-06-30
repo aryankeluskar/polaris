@@ -82,7 +82,8 @@ $dropzone-stacking-order: (
     &:hover {
       cursor: pointer;
       background-color: var(--p-color-bg-subdued);
-      #{$se23} {
+
+      #{$se23} & {
         background-color: var(--p-color-bg-input-hover-experimental);
       }
 
@@ -105,7 +106,7 @@ $dropzone-stacking-order: (
     }
   }
 
-  #{$se23} &:not(.focused):not(.isDisabled) {
+  #{$se23} &:not(.focused):not(.isDisabled):not(:hover) {
     // the additional .isDisabled argument in this :not invocation is to ensure we don't mess up disabled styles due to specificity.
     // Won't be necessary post SE23.
     &::after {
@@ -180,7 +181,7 @@ $dropzone-stacking-order: (
   pointer-events: none;
 
   #{$se23} & {
-    border: var(--p-border-width-2-experimental) solid
+    border: var(--p-border-width-1-experimental) solid
       var(--p-color-border-input-active-experimental);
     background-color: var(--p-color-bg-input-active-experimental);
     color: var(--p-color-text);
