@@ -2,10 +2,11 @@ import React, {useRef, useId} from 'react';
 
 import {classNames} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
+import type {ChoiceBleedProps} from '../Choice';
 
 import styles from './RadioButton.scss';
 
-export interface RadioButtonProps {
+export type RadioButtonProps = ChoiceBleedProps & {
   /** Indicates the ID of the element that describes the the radio button */
   ariaDescribedBy?: string;
   /** Label for the radio button */
@@ -30,7 +31,7 @@ export interface RadioButtonProps {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
-}
+};
 
 export function RadioButton({
   ariaDescribedBy: ariaDescribedByProp,
@@ -45,6 +46,7 @@ export function RadioButton({
   id: idProp,
   name: nameProp,
   value,
+  ...choiceProps
 }: RadioButtonProps) {
   const uniqId = useId();
   const id = idProp ?? uniqId;
@@ -80,6 +82,7 @@ export function RadioButton({
       id={id}
       helpText={helpText}
       labelClassName={styles.ChoiceLabel}
+      {...choiceProps}
     >
       <span className={styles.RadioButton}>
         <input

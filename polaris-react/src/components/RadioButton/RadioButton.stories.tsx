@@ -1,6 +1,14 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {RadioButton, LegacyStack} from '@shopify/polaris';
+import {
+  RadioButton,
+  LegacyStack,
+  Card,
+  VerticalStack,
+  Text,
+  Box,
+  Divider,
+} from '@shopify/polaris';
 
 export default {
   component: RadioButton,
@@ -59,5 +67,72 @@ export function DisabledRadio() {
         disabled
       />
     </LegacyStack>
+  );
+}
+
+export function WithBleed() {
+  const [value1, setValue1] = useState('disabled');
+  const [value2, setValue2] = useState('disabled');
+  const handleChange1 = useCallback(
+    (_checked, newValue) => setValue1(newValue),
+    [],
+  );
+  const handleChange2 = useCallback(
+    (_checked, newValue) => setValue2(newValue),
+    [],
+  );
+
+  return (
+    <VerticalStack gap="8">
+      <VerticalStack gap="2">
+        <Text as="h2">No Bleed</Text>
+        <Card padding="4">
+          <VerticalStack gap="4">
+            <RadioButton
+              label="Accounts are disabled"
+              checked={value1 === 'disabled'}
+              id="disabled"
+              name="accounts"
+              onChange={handleChange1}
+            />
+            <RadioButton
+              label="Accounts are optional"
+              id="optional"
+              name="accounts"
+              checked={value1 === 'optional'}
+              onChange={handleChange1}
+            />
+          </VerticalStack>
+        </Card>
+      </VerticalStack>
+      <VerticalStack gap="2">
+        <Text as="h2">Bleed</Text>
+        <Box width="min-content" background="bg" borderRadius="3">
+          <Box padding="8">
+            <RadioButton
+              label="Accounts are disabled"
+              labelHidden
+              checked={value2 === 'disabled'}
+              id="disabled"
+              name="accounts"
+              onChange={handleChange2}
+              bleed="8"
+            />
+          </Box>
+          <Divider />
+          <Box padding="8">
+            <RadioButton
+              label="Accounts are optional"
+              labelHidden
+              checked={value2 === 'optional'}
+              id="optional"
+              name="accounts"
+              onChange={handleChange2}
+              bleed="8"
+            />
+          </Box>
+        </Box>
+      </VerticalStack>
+    </VerticalStack>
   );
 }

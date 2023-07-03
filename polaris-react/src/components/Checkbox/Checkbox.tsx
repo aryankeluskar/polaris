@@ -8,6 +8,7 @@ import React, {
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
+import type {ChoiceBleedProps, ChoiceFillProps} from '../Choice';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
@@ -16,36 +17,39 @@ import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
 
-export interface CheckboxProps {
-  /** Indicates the ID of the element that is controlled by the checkbox */
-  ariaControls?: string;
-  /** Indicates the ID of the element that describes the checkbox */
-  ariaDescribedBy?: string;
-  /** Label for the checkbox */
-  label: React.ReactNode;
-  /** Visually hide the label */
-  labelHidden?: boolean;
-  /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
-  checked?: boolean | 'indeterminate';
-  /** Additional text to aide in use */
-  helpText?: React.ReactNode;
-  /** Disable input */
-  disabled?: boolean;
-  /** ID for form input */
-  id?: string;
-  /** Name for form input */
-  name?: string;
-  /** Value for form input */
-  value?: string;
-  /** Display an error message */
-  error?: Error | boolean;
-  /** Callback when checkbox is toggled */
-  onChange?(newChecked: boolean, id: string): void;
-  /** Callback when checkbox is focused */
-  onFocus?(): void;
-  /** Callback when focus is removed */
-  onBlur?(): void;
-}
+export type CheckboxProps = ChoiceBleedProps &
+  ChoiceFillProps & {
+    /** Indicates the ID of the element that is controlled by the checkbox */
+    ariaControls?: string;
+    /** Indicates the ID of the element that describes the checkbox */
+    ariaDescribedBy?: string;
+    /** Label for the checkbox */
+    label: React.ReactNode;
+    /** Visually hide the label */
+    labelHidden?: boolean;
+    /** Checkbox is selected. `indeterminate` shows a horizontal line in the checkbox */
+    checked?: boolean | 'indeterminate';
+    /** Additional text to aide in use */
+    helpText?: React.ReactNode;
+    /** Disable input */
+    disabled?: boolean;
+    /** ID for form input */
+    id?: string;
+    /** Name for form input */
+    name?: string;
+    /** Value for form input */
+    value?: string;
+    /** Display an error message */
+    error?: Error | boolean;
+    /** Callback when checkbox is toggled */
+    onChange?(newChecked: boolean, id: string): void;
+    /** Callback when checkbox is focused */
+    onFocus?(): void;
+    /** Callback when focus is removed */
+    onBlur?(): void;
+    /** Added to the wrapping label */
+    labelClassName?: string;
+  };
 
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
   function Checkbox(
@@ -64,6 +68,8 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       onChange,
       onFocus,
       onBlur,
+      labelClassName,
+      ...choiceProps
     }: CheckboxProps,
     ref,
   ) {
@@ -131,7 +137,8 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         helpText={helpText}
         error={error}
         disabled={disabled}
-        labelClassName={styles.ChoiceLabel}
+        labelClassName={classNames(styles.ChoiceLabel, labelClassName)}
+        {...choiceProps}
       >
         <span className={wrapperClassName}>
           <input
