@@ -1,6 +1,10 @@
 import type {MetadataProperties} from '../types';
 
-export type BreakpointsAlias = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+// NOTE: Order is important here: smallest -> largest
+export const breakpointAliases = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+
+// Convert the array to a Tuple
+export type BreakpointsAlias = typeof breakpointAliases[number];
 
 export type BreakpointsTokenName = `breakpoints-${BreakpointsAlias}`;
 
